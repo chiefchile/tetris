@@ -12,7 +12,7 @@ const initGrid = () => {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-  }
+}
 
 let block = {}
 const createBlock = () => {
@@ -62,7 +62,8 @@ const createBlock = () => {
         ]
     }
 
-    block = {x: 3, y: 0,
+    block = {
+        x: 3, y: 0,
         matrix: matrix
     };
 }
@@ -73,7 +74,7 @@ const drawBlock = () => {
             if (val === 1) {
                 ctx.fillStyle = "blue";
                 ctx.fillRect(block.x + x, block.y + y, 1, 1);
-            }    
+            }
         });
     });
 }
@@ -84,7 +85,7 @@ const drawGrid = () => {
             if (val === 1) {
                 ctx.fillStyle = "blue";
                 ctx.fillRect(x, y, 1, 1);
-            }    
+            }
         });
     });
 }
@@ -129,9 +130,9 @@ const saveBlockToGrid = () => {
         row.forEach((val, x) => {
             if (val === 1) {
                 grid[y + block.y][x + block.x] = 1;
-            }    
+            }
         });
-    });    
+    });
 }
 
 const collision = () => {
@@ -139,15 +140,15 @@ const collision = () => {
         for (let x = 0; x < block.matrix.length; x++) {
             if (block.matrix[y][x] === 1) {
                 if (y + block.y >= 18 ||
-                    x + block.x >= 10 || 
+                    x + block.x >= 10 ||
                     x + block.x < 0 ||
                     grid[y + block.y][x + block.x] === 1) {
-                        return true;
+                    return true;
                 }
             }
         }
     }
-    return false;  
+    return false;
 }
 
 document.addEventListener("keydown", (ev) => {
@@ -195,7 +196,7 @@ const clearLines = () => {
     for (let i = 0; i < rows.length; i++) {
         grid.splice(rows[i] - i, 1);
         score += 100;
-    } 
+    }
 
     for (let i = 0; i < rows.length; i++) {
         grid.splice(i, 0, new Array(10).fill(0));
@@ -205,16 +206,16 @@ const clearLines = () => {
 
 const transpose = matrix => {
     for (let row = 0; row < matrix.length; row++) {
-      for (let column = 0; column < row; column++) {
-        let temp = matrix[row][column]
-        matrix[row][column] = matrix[column][row]
-        matrix[column][row] = temp
-      }
+        for (let column = 0; column < row; column++) {
+            let temp = matrix[row][column]
+            matrix[row][column] = matrix[column][row]
+            matrix[column][row] = temp
+        }
     }
     return matrix;
 }
 
-const reverse = matrix =>  matrix.map(row => row.reverse());
+const reverse = matrix => matrix.map(row => row.reverse());
 
 let score = 0;
 initGrid();
