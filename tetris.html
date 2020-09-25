@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <style>
+        #score {
+            font-weight: bold;
+        }
+        
+        #container {
+            display: flex;
+        }
+
+        #controls {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Score: <span id="score"></span>
+    </div>
+    <div id="container">
+        <canvas id="canvas" width="200" height="360"></canvas>
+        <div id="controls">
+            <h4>Controls</h4>
+            Rotate: UP <br>
+            Move: LEFT, RIGHT, DOWN
+        </div>
+    </div>
+    <script src="tetris.js"></script>
+</body>
+</html>
